@@ -26,23 +26,23 @@ body {
  }
 
 a {
-  font-family: 'freight-text-pro', serif;
-  font-size: 2rem;
-  font-weight: 300;
-  font-style: italic;
-  text-decoration: none;
-  color: #484848;
-}
+ font-family: 'freight-text-pro', serif;
+ font-size: 2rem;
+ font-weight: 300;
+ font-style: italic;
+ text-decoration: none;
+ color: #484848;
+ }
 
 a:hover {
  color: #ef3815;
  border-bottom: .5px solid;
-}
+ }
 
 a:active {
  color: #5D80DB;
  border-bottom: .5px solid;
-}
+ }
 
 /* Main structure */
 .page-container {
@@ -50,7 +50,7 @@ a:active {
  flex-flow: row nowrap;
  }
 
-.sidebar {
+.page-sidebar {
  display: inline-flex;
  flex-flow: column wrap;
  width: 25vw;
@@ -68,6 +68,12 @@ a:active {
  list-style-type: none;
  background: #fff;
  }
+
+ section {
+ display: flex;
+ flex-flow: column nowrap;
+ }
+
 
 /* Navigation */
 nav {
@@ -93,12 +99,83 @@ nav ul li {
  text-align: right;
  }
 
-nav a {
+li ~ .top {
+  border-bottom: .5px solid white;
+}
+
+nav ul a {
+ font-size: 1.4rem;
+ font-family: freight-sans-pro, sans-serif;
+ font-weight: 500;
+ font-style: initial;
+ text-transform: uppercase;
+ letter-spacing: .25em;
+ text-align: right;
  color: #fff;
  }
 
+ .sub.anchor {
+  display: none;
+ }
 
-/* Header */
+/* Content - general */
+h3 {
+ margin: 0 0 .5em 0;
+ padding: 0;
+ font-size: 1.4rem;
+ font-family: freight-sans-pro, sans-serif;
+ font-weight: 500;
+ text-transform: uppercase;
+ letter-spacing: .25em;
+ color: #ef3815;
+ border-bottom: .5px solid #1c1e26;
+ }
+
+h4 {
+ margin: 0;
+ padding: 0;
+ font-family: "Roboto", sans-serif;
+ font-weight: 900;
+ font-size: 3rem;
+ line-height: 3.5em;
+ text-transform: uppercase;
+ color: #484848
+ }
+
+.h4-sub {
+ margin: 0;
+ padding: 0;
+ font-family: "Oswald", sans-serif;
+ font-weight: 400;
+ font-size: 2rem;
+ letter-spacing: .1em;
+ text-transform: uppercase;
+ color: #484848;
+ }
+
+h5 {
+ padding: 0 0 .5em 0;
+ font-family: 'Roboto Condensed', sans-serif;
+ font-weight: 400;
+ font-size: 2rem;
+ line-height: initial;
+ color: #EF3815; 
+ }
+
+p {
+ font-family: freight-text-pro, serif;
+ padding-bottom: 1rem;
+ line-height: 3rem;
+ font-size: 2rem;
+ font-weight: 300;
+ }
+
+p:last-of-type {
+ padding-bottom: 0;
+ }
+
+/** Content - specific **/
+/* Home */
 header {
  height: 100vh;
  width: 100%;
@@ -117,15 +194,15 @@ h1 {
  text-transform: uppercase;
  color: #1c1e26;
  line-height: 6rem;
-}
+ }
 
 #home h1::before {
  content: "joshua ";
-}
+ }
 
 #home h1::after {
  content: " duval";
-}
+ }
 
 h1 > strong, h1 > strong a {
  font-family: 'Roboto', sans-serif;
@@ -133,13 +210,13 @@ h1 > strong, h1 > strong a {
  font-style: initial;
  font-size: 4rem;
  color: #5D80DB;
-}
+ }
 
 h1 .brackets {
  font-family: 'Crete Round', serif;
  font-weight: 400;
  font-size: 4.5rem;
-}
+ }
 
 h2 {
  display: flex;
@@ -152,27 +229,8 @@ h2 {
  text-transform: lowercase;
  color: #5D80DB;
  line-height: 1;
-}
-
-
-/* Section Content */
-p {
- font-family: freight-text-pro, serif;
- padding-bottom: 1rem;
- line-height: 3rem;
- font-size: 2rem;
- font-weight: 300;
  }
 
-p:last-of-type {
- padding-bottom: 0;
- }
-
-/* Content sections - general */
-section {
- display: flex;
- flex-flow: column nowrap;
-}
 
 .section-header, .slide {
  display: flex;
@@ -200,19 +258,6 @@ header.section-blank {
  border: none;
 }
 
-h3 {
- margin: 0 0 .5em 0;
- padding: 0;
- font-size: 1.4rem;
- font-family: freight-sans-pro, sans-serif;
- font-weight: 500;
- text-transform: uppercase;
- letter-spacing: .25em;
- text-align: right;
- color: #ef3815;
- border-bottom: .5px solid white;
-}
-
 .section-blank h3 {
  border-bottom: .5px solid #1c1e26;
 }
@@ -224,37 +269,7 @@ h3 {
  line-height: 0;
 }
 
-h4 {
- margin: 0 0 .5em 0;
- padding: 0;
- line-height: 2.1rem;
- font-size: 1.4rem;
- font-family: freight-sans-pro, sans-serif;
- font-weight: 500;
- text-transform: uppercase;
- text-align: right;
- color: #a9a9a9;
-}
 
-.h4-sub {
- margin: 0;
- padding: 0;
- font-family: "Oswald", sans-serif;
- font-weight: 400;
- font-size: 2rem;
- letter-spacing: .1em;
- text-transform: uppercase;
- color: #484848;
-}
-
-h5 {
- padding: 0 0 .5em 0;
- font-family: 'Roboto Condensed', sans-serif;
- font-weight: 400;
- font-size: 2rem;
- line-height: initial;
- color: #EF3815; 
-}
 
 .slide strong {
  font-weight: 500;
