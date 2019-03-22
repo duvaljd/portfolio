@@ -61,30 +61,28 @@ function jump(elID) {
 //Sticky navigation
 $(function() {
 
- var bodynav_container = $('.nav-container');
- var bodynav = $('#body-nav');
- var topnav = $('#top-nav')
- var bodyh1 = $('#body-h1');
- var bodyh2 = $('#body-h2');
- var height = bodynav_container.outerHeight()
+ var brand_Container = $('.sidebar .container');
+ var brand_Height = brand_Container.outerHeight();
+ var brand = $('nav h1');
+ var header = $('header');
+ var header_Height = header.outerHeight();
+ var header_h1 = $('header h1');
+ var header_h2 = $('header h2');
 
- bodynav.waypoint({
+ header_h2.waypoint({
   handler: function(direction) {
 
    if (direction == 'down') {
-    bodynav.css('display', 'none');
-    bodyh1.css('display', 'none');
-    bodyh2.css('display', 'none');
-    topnav.css('display', 'flex');
+    header_h1.css({'display': 'none'});
+    header_h2.css({'display': 'none'});
+    brand.css({'display': 'flex', 'position': 'fixed', 'color': '#fff', 'padding-top': '5vh'});
     console.log("Yes I'm triggering");
 
    } else {
     console.log('here we are');
-    topnav.css('display', 'none');
-    bodynav_container.css('height', height);
-    bodynav.css('display', 'flex');
-    bodyh1.css('display', 'initial');
-    bodyh2.css('display', 'initial');
+    header_h1.css({'display': 'initial'});
+    header_h2.css({'display': 'flex'});
+    brand.css({'display': 'none'});
    }
   }
  });
@@ -94,5 +92,5 @@ $(".section-anchor").click(function(event){
  var windowHeight = $(window).height();   
  event.preventDefault();
  $('html,body').animate({
-  scrollTop: $(this.hash).offset().top + -(.15 * windowHeight)}, 500);
+  scrollTop: $(this.hash).offset().top + -(.05 * windowHeight)}, 500);
 });

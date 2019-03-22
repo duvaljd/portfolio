@@ -17,21 +17,19 @@
   </head>
 
  <body>
- 	{% include 'top-nav.html' %}
-  <ul class="main">
-   <li class="header">
-    {% include 'header.html' %}
-   </li>
-   <li class="about">
-   	{% include 'about.html' %}
-   </li>
-   <li>
-   	{% include 'work.html' %}
-   </li>
-   <li>
-   	{% include 'education.html' %}
-   </li>
-  </ul>		
+ 	<div class="page-container">
+ 		
+ 		<nav class="sidebar">
+ 			{% include 'nav.html' %}
+ 		</nav>
+  
+	  <ul class="page-content">
+	   <li class="section-container">{% include 'header.html' %}</li>
+	   <li class="section-container">{% include 'about.html' %}</li>
+	   <li class="section-container">{% include 'work.html' %}</li>
+	   <li class="section-container">{% include 'education.html' %}</li>
+	  </ul>
+	 </div>
  </body>
 
  <script src="static/scripts/javascript.js"></script>
