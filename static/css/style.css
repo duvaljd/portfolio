@@ -1,4 +1,4 @@
-/* Global styles */
+/** Global styles **/
 * {
  box-sizing: border-box;
  -moz-box-sizing: border-box;
@@ -18,8 +18,6 @@ body {
  width: 100vw;
  max-width: 100%;
  overflow: scroll;
- line-height: 3.6rem;
- font-size: 2.4rem;
  font-family: "freight-text-pro", serif;
  font-kerning: normal;
  text-rendering: optimizelegibility;
@@ -44,7 +42,7 @@ a:active {
  border-bottom: .5px solid;
  }
 
-/* Main structure */
+/** Main structure **/
 .page-container {
  display: flex;
  flex-flow: row nowrap;
@@ -53,7 +51,7 @@ a:active {
 .page-sidebar {
  display: inline-flex;
  flex-flow: column wrap;
- width: 25vw;
+ width: 30vw;
  height: 100vh;
  padding: 0 5vw 0 10vw;
  position: fixed;
@@ -64,18 +62,27 @@ a:active {
  height: 100%;
  width: 100%;
  margin: 0;
- padding: 0 10vw 0 30vw;
+ padding: 0 10vw 0 35vw;
  list-style-type: none;
  background: #fff;
  }
 
- section {
+section {
  display: flex;
  flex-flow: column nowrap;
+ max-width: 700px;
+ margin-bottom: 40vh;
  }
 
+.content-block {
+ margin-bottom: 10vh;
+}
 
-/* Navigation */
+.content-block:last-of-type {
+ margin: 0;
+}
+
+/** Navigation **/
 nav {
  display: flex;
  width: 100%;
@@ -89,21 +96,22 @@ nav ul {
  display: flex;
  flex-flow: column nowrap;
  list-style-type: none;
- margin: auto;
+ height: 100%;
+ margin: 0;
  padding: 0;
+ justify-content: center;
  }
 
 nav ul li {
- font-size: 1.8rem;
- padding: 0;
  text-align: right;
  }
 
-li ~ .top {
-  border-bottom: .5px solid white;
-}
+nav ul li.active {
+ border-bottom: .5px solid #fff;
+ }
 
-nav ul a {
+nav > ul li a {
+ display: block;
  font-size: 1.4rem;
  font-family: freight-sans-pro, sans-serif;
  font-weight: 500;
@@ -114,11 +122,27 @@ nav ul a {
  color: #fff;
  }
 
- .sub.anchor {
-  display: none;
+.anchor.top, .external-link {
+ padding-bottom: 1vh;
  }
 
-/* Content - general */
+.anchor.sub {
+ display: none;
+ letter-spacing: initial;
+ line-height: 1.4rem;
+ }
+
+.anchor.sub.visible {
+ display: initial;
+ }
+
+.anchor.sub.active {
+ color: #ef3815;
+ }
+
+/** Content **/
+
+/* general */
 h3 {
  margin: 0 0 .5em 0;
  padding: 0;
@@ -174,8 +198,7 @@ p:last-of-type {
  padding-bottom: 0;
  }
 
-/** Content - specific **/
-/* Home */
+/* header */
 header {
  height: 100vh;
  width: 100%;
@@ -196,11 +219,11 @@ h1 {
  line-height: 6rem;
  }
 
-#home h1::before {
+header h1::before {
  content: "joshua ";
  }
 
-#home h1::after {
+header h1::after {
  content: " duval";
  }
 
@@ -232,35 +255,8 @@ h2 {
  }
 
 
-.section-header, .slide {
- display: flex;
- flex-flow: row wrap;
-}
 
-.section-title, .slide-header {
 
-}
-
-.header .section-title {
- padding: 38vh 5vw 40vh 10vw;
-}
-
-.section-blank, .slide-content {
- max-width: 800px;
- width: 65vw;
- padding: 0 0vw 5vh 5vw;
- color: #484848;
-}
-
-header.section-blank {
- justify-content: center;
- flex-flow: column wrap;
- border: none;
-}
-
-.section-blank h3 {
- border-bottom: .5px solid #1c1e26;
-}
 
 /* Slide content */
 .details {
@@ -381,8 +377,8 @@ p.description-subheader, label {
 }
 
 #headshot {
- width: 50%;
- height: 50%;
+ width: 45%;
+ height: 45%;
  float: right;
 }
 
