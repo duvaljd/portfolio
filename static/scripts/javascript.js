@@ -84,9 +84,9 @@ $('section').waypoint(function(direction) {
  var sublinks = getRelatedSubLinks(this.element.id);
 
  $(navlink).parent('li').toggleClass('active', direction == 'down');
- $(sublinks).toggleClass('visible', direction == 'down');
+ $(sublinks).parent('li').toggleClass('visible', direction == 'down');
 }, {
- offset: '50%'
+ offset: '25%'
 });
 
 // Highlight active section links
@@ -94,7 +94,7 @@ $('.content-block').waypoint(function(direction) {
  var navlink = getRelatedNavigation(this.element.id);
  $(navlink).toggleClass('active', direction == 'down');
 }, {
- offset: '50%'
+ offset: '25%'
 });
 
 // Remove section highlight
@@ -113,7 +113,7 @@ $('section').waypoint(function(direction) {
  var sublinks = getRelatedSubLinks(this.element.id);
 
  $(navlink).parent('li').toggleClass('active', direction == 'up');
- $(sublinks).toggleClass('visible', direction == 'up');
+ $(sublinks).parent('li').toggleClass('visible', direction == 'up');
 }, {
  offset: function() {
   return -$(this.element).height() + 100;
