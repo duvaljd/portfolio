@@ -11,35 +11,16 @@ $(window).resize(function() {
 
 function stickynav() {
 
- var brand_Height = adjustBrandHeight();
- var brand = $('nav h1');
- var header_Height = adjustHeaderHeight;
- var header_h2 = $('header h2');
- var bodyWidth = adjustWidth;
+ var navigation = $('nav');
+ var trigger = $('header h1');
 
- function adjustBrandHeight() {
-  newBrandHeight = $('.page-sidebar .container').outerHeight();
-  return newBrandHeight;
- }
-
- function adjustHeaderHeight() {
-  newHeaderHeight = $('header').outerHeight();
-  return newHeaderHeight;
- }
-
- function adjustWidth() {
-  newBodyWidth = $('body').outerWidth() * .75;
-  return newBodyWidth;
- }
-
- header_h2.waypoint(function(direction) {
+ trigger.waypoint(function(direction) {
 
    if (direction == 'down') {
-    brand.css({'display': 'flex', 'position': 'fixed', 'color': '#fff', 'padding-top': '5vh', 'right': bodyWidth, 'line-height': '4rem'});
+    navigation.toggleClass('scrolled');
 
    } else {
-
-    brand.css({'display': 'none'});
+    navigation.toggleClass('scrolled');
    }
   });
 };
@@ -56,7 +37,7 @@ function jump() {
    top = el.style.top;
 
    el.style.position ='relative';
-   el.style.top = '-5vh';
+   el.style.top = '-10vh';
    el.scrollIntoView({behavior: 'smooth', block: 'start'});
    el.style.top = top;
    el.style.position = pos;
@@ -134,15 +115,15 @@ function plusDivs(n, j) {
   showDivs(slideIndex += n, j);
 }
 
-function currentDiv(n, j) {
-  showDivs(slideIndex = n, j);
-}
-
 function showDivs(n, j) {
   var i;
   var z = document.getElementsByClassName("slideshow")[j];
   var x = z.getElementsByClassName("slide");
-  var dots = z.getElementsByClassName("dot");
+  var subs = z.getElementsByClassName("sub");
+
+  console.log(z);
+  console.log(x);
+  console.log(subs)
 
   if (n > x.length) {
     slideIndex = 1
@@ -158,10 +139,14 @@ function showDivs(n, j) {
     x[i].style.display = "none";
   }
 
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+  for (i = 0; i < subs.length; i++) {
+    subs[i].className = subs[i].className.replace(" active", "");
   }
 
   x[slideIndex - 1].style.display = "flex";
-  dots[slideIndex - 1].className += " active";
-};
+  subs[slideIndex - 1].className += " active";
+}
+
+function currentDiv(n, j) {
+ showDivs(slideIndex = n, j);
+ };
