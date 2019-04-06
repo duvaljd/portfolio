@@ -2,11 +2,17 @@
 $(document).ready(function() {
  stickynav();
  jump();
+ scroll();
  })
 
 $(window).resize(function() {
  stickynav();
  jump();
+
+$(window).scroll(function() {
+  scroll();
+})
+
 })
 
 function stickynav() {
@@ -25,6 +31,16 @@ function stickynav() {
   });
 };
 
+//// SCROLL SNAP (SCROLLIFY)
+function scroll() {
+  $.scrollify({
+    section: '.section-container',
+    standardScrollElements: '.content-block',
+    setHeights: false,
+  })
+}
+
+
 //// ANCHOR LINKS
 function jump() {
  $('a').on('click', function(event) {
@@ -37,7 +53,6 @@ function jump() {
    top = el.style.top;
 
    el.style.position ='relative';
-   el.style.top = '-10vh';
    el.scrollIntoView({behavior: 'smooth', block: 'start'});
    el.style.top = top;
    el.style.position = pos;
@@ -120,10 +135,6 @@ function showDivs(n, j) {
   var z = document.getElementsByClassName("slideshow")[j];
   var x = z.getElementsByClassName("slide");
   var subs = z.getElementsByClassName("sub");
-
-  console.log(z);
-  console.log(x);
-  console.log(subs)
 
   if (n > x.length) {
     slideIndex = 1
