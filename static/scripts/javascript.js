@@ -1,20 +1,4 @@
 //// STICKY NAVIGATION
-$(document).ready(function() {
- stickynav();
- jump();
- scroll();
- })
-
-$(window).resize(function() {
- stickynav();
- jump();
-
-$(window).scroll(function() {
-  scroll();
-})
-
-})
-
 function stickynav() {
 
  var navigation = $('nav');
@@ -28,18 +12,11 @@ function stickynav() {
    } else {
     navigation.toggleClass('scrolled');
    }
+    context: '.page-content'
+  }, {
+    context: '.page-content'
   });
 };
-
-//// SCROLL SNAP (SCROLLIFY)
-function scroll() {
-  $.scrollify({
-    section: '.section-container',
-    standardScrollElements: '.content-block',
-    setHeights: false,
-  })
-}
-
 
 //// ANCHOR LINKS
 function jump() {
@@ -68,52 +45,48 @@ function getRelatedNavigation(id) {
  return $('a[href="#' + id +'"]')
 };
 
-function getRelatedSubLinks(id) {
- var navlink = getRelatedNavigation(id);
- var sublinks = navlink.parent('li').siblings().find('a[href*="#' + id +'"]');
- return sublinks
-}
-
 // Open & highlight nav section
 $('section').waypoint(function(direction) {
  var navlink = getRelatedNavigation(this.element.id);
- var sublinks = getRelatedSubLinks(this.element.id);
 
- $(navlink).parent('li').toggleClass('active', direction == 'down');
- $(sublinks).parent('li').toggleClass('visible', direction == 'down');
+ $(navlink).toggleClass('active', direction == 'down');
 }, {
- offset: '25%'
+ offset: '25%',
+ context: '.page-content'
 });
 
 // Highlight active section links
 $('.content-block').waypoint(function(direction) {
  var navlink = getRelatedNavigation(this.element.id);
+
  $(navlink).toggleClass('active', direction == 'down');
 }, {
- offset: '25%'
+ offset: '25%',
+ context: '.page-content'
 });
 
 // Remove section highlight
 $('.content-block').waypoint(function(direction) {
  var navlink = getRelatedNavigation(this.element.id);
+
  $(navlink).toggleClass('active', direction == 'up');
 }, {
  offset: function() {
   return -$(this.element).height() + 100;
- }
+ },
+ context: '.page-content'
 });
 
 // Remove nav highlight and close section
 $('section').waypoint(function(direction) {
  var navlink = getRelatedNavigation(this.element.id);
- var sublinks = getRelatedSubLinks(this.element.id);
 
- $(navlink).parent('li').toggleClass('active', direction == 'up');
- $(sublinks).parent('li').toggleClass('visible', direction == 'up');
+ $(navlink).toggleClass('active', direction == 'up');
 }, {
  offset: function() {
   return -$(this.element).height() + 100;
- }
+ },
+ context: '.page-content'
 });
 
 //// SLIDESHOW
@@ -161,3 +134,24 @@ function showDivs(n, j) {
 function currentDiv(n, j) {
  showDivs(slideIndex = n, j);
  };
+
+//// EXECUTE
+
+// When document is ready
+$(document).ready(function() {
+ stickynav();
+ jump();
+ })
+
+
+// When window is resized
+$(window).resize(function() {
+ stickynav();
+ jump();
+ })
+
+// When window is zoomed
+$(window).on('zoom', function() {
+ stickynav();
+ jump();
+})
