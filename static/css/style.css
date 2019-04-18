@@ -55,13 +55,9 @@ a:hover, a.active:hover {
  background: #1C1E26;
  overflow-y: scroll;
  scroll-behavior: smooth;
- scroll-snap-points-y: repeat(100vh);
- scroll-snap-destination: 0 0;
  scroll-snap-type: y mandatory;
  scroll-snap-type: mandatory;
- -ms-scroll-snap-y: mandatory snapInterval(0%, 100%);
- scrollbar-width: none;
- -ms-overflow-style: none;
+ scroll-snap-points-y: repeat(100vh);
  }
 
 .page-content::-webkit-scrollbar {
@@ -70,9 +66,7 @@ a:hover, a.active:hover {
 }
 
 .section-container {
- scroll-snap-align: start;
- scroll-snap-coordinate: 0% 0%;
- -webkit-scroll-snap-coordinate: 0% 0%;
+ scroll-snap-align: center;
 }
 
 section, header {
@@ -112,11 +106,15 @@ section, header {
  position: relative;
  flex-flow: row nowrap;
  align-items: flex-start;
+ justify-content: flex-start;
  height: 70vh;
- padding-left: 5vw;
- overflow-x: hidden;
+ width: 55vw;
+ overflow-x: auto;
  overflow-y: auto;
  scroll-behavior: smooth;
+ scroll-snap-type: x mandatory;
+ scroll-snap-type: mandatory;
+ scroll-snap-points-x: repeat(55vw);
 }
 
 .section-content::-webkit-scrollbar {
@@ -131,12 +129,19 @@ section, header {
  background-color: #A9A9A9;
 }
 
-.section-header, .content-block {
+.section-content::-webkit-scrollbar:horizontal {
+ visbility: hidden;
+ display: none;
+}
+
+.content-block {
  display: flex;
  flex-flow: column nowrap;
  min-width: 55vw;
  max-width: 55vw;
  margin: auto;
+ padding-left: 5vw;
+ scroll-snap-align: center;
 }
 
 /** NAVIGATION **/
@@ -288,11 +293,7 @@ h2:after {
  }
 
 /* general content */
-.sub {
- cursor: pointer;
-}
-
-.section-links span.sub {
+.section-links a.sub {
  font-family: 'ff-tisa-sans-web-pro', sans-serif;
  font-size: 1.2rem;
  line-height: 2.4rem;
@@ -302,11 +303,11 @@ h2:after {
  color: #fff;
 }
 
-.sub.active, .section-links span.sub.active {
+.sub.active, .section-links a.sub.active {
  color: #1ABC9C;
  }
 
-.section-links span.sub:hover, h3:hover, h3.sub.active:hover   {
+.section-links a.sub:hover, h3:hover, h3.sub.active:hover   {
  color: #0AA1F0;
 }
 
@@ -471,7 +472,7 @@ label:hover {
 }
 
 .summary tr + tr > td {
- border-top-width: 2rem;
+ border-top-width: 1.5rem;
 }
 
 .summary tr td:first-of-type span:first-of-type {
