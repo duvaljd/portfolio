@@ -389,32 +389,17 @@ p strong {
  color: #FFF;
 }
 
-#home .section-content:after {
- content: '\2B63';
+ /* #home .section-content:before {
+ content: '\2193     SCROLL';
  position: absolute;
  bottom: 0;
+ left: 5vw;
  display: flex;
- font-size: 3.5rem;
+ font-size: 1rem;
  color: white;
 }
 
 /* collapsible tabs */
-
-label {
- margin: 1em 0 .25em 0;
- font-size: 1.2rem;
- font-family: 'ff-tisa-sans-web-pro';
- font-weight: 400;
- color: #F00A1E;
- line-height: 2.4rem;
- text-transform: uppercase;
- letter-spacing: .05rem;
-}
-
-label:hover {
- color: #0AA1F0;
-}
-
 .tab {
  position: relative;
  width: 100%;
@@ -430,14 +415,18 @@ label:hover {
  position: relative;
  display: block;
  cursor: pointer;
+ margin: 1em 0 .25em 0;
+ font-size: 1.2rem;
+ font-family: 'ff-tisa-sans-web-pro';
+ font-weight: 400;
+ color: #F00A1E;
+ line-height: 2.4rem;
+ text-transform: uppercase;
+ letter-spacing: .05rem;
 }
 
-.tab-content {
- display: none;
-}
-
-.tab input:checked ~ .tab-content {
- display: block;
+.tab label:hover {
+ color: #0AA1F0;
 }
 
 .tab input + label::before {
@@ -453,6 +442,14 @@ label:hover {
 
 .tab input:checked + label::before {
  content: "-";
+}
+
+.tab-content {
+ display: none;
+}
+
+.tab input:checked ~ .tab-content {
+ display: block;
 }
 
 /* work history & education */
@@ -547,6 +544,104 @@ label:hover {
  margin: 0;
  padding: 0;
 }
+
+/* portfolio
+========================================================== */
+.grid {
+ display: flex;
+ flex-flow: row wrap;
+ position: relative;
+ }
+
+.grid-item {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex: 1 0 16vw;
+ height: 23vh;
+ overflow: hidden;
+ transition: .5s ease;
+ }
+
+.grid-item:hover {
+ border: .5px dotted #FFF;
+ }
+
+.grid-item:not(:nth-of-type(3n)) {
+ color: white;
+ margin-right: .4vw;
+ }
+
+.grid-item:not(:nth-child(n+7)) {
+ margin-bottom: .45vh;
+ }
+
+.grid-item input {
+ display: none;
+ }
+
+.grid-item label {
+ display: flex;
+ width: 100%;
+ height: 100%;
+ justify-content: center;
+ align-items: center;
+ cursor: pointer;
+ transition: .5s ease;
+ overflow: hidden;
+ }
+
+.grid-item input:checked ~ label {
+ display: flex;
+ position: absolute;
+ left: 7.5vw;
+ top: 4vh;
+ width: 45vw;
+ height: 62vh;
+ align-items: center;
+ justify-content: center;
+ border: .5px dotted #1ABC9C;
+ background: #1C1E26;
+ transition: ease .5s;
+ z-index: 99;
+ }
+
+.grid-item img {
+ width: 11vw;
+ transition: .5s ease;
+ opacity: 1;
+ backface-visibility: hidden;
+ }
+
+.grid-item:hover img {
+ opacity: .1;
+ }
+
+.grid-item div {
+ display: flex;
+ position: absolute;
+ justify-content: center;
+ align-items: flex-end;
+ transition: .5s ease;
+ opacity: 0;
+ }
+
+.grid-item:hover div {
+ opacity: 1;
+ }
+
+.grid-item h5 {
+ display: flex;
+ text-align: center;
+ max-width: 16vw;
+ margin: auto;
+ }
+
+.grid-item div:hover h5 {
+ color: #0AA1F0;
+ }
+
+
 
 /* ANIMATIONS
 ========================================================== */
@@ -647,12 +742,4 @@ nav li {
  -webkit-animation: fadeIn 1s ease-in 2.5s 1 backwards;
  -moz-animation: fadeIn 1s ease-in 2.5s 1 backwards;
  -o-animation: fadeIn 1s ease-in 2.5s 1 backwards;
-}
-
-/* Blinking arrow */
-#home .section-content:after {
- animation: fadeInfadeOut 1.5s ease-in-out 5s 1 backwards;
- -webkit-animation: fadeInfadeOut 1.5s ease-in 5s 1 backwards;
- -moz-animation: fadeInfadeOut 1.5s ease-in 5s 1 backwards;
- -o-animation: fadeInfadeOut 1.5s ease-in 5s 1 backwards;
 }
