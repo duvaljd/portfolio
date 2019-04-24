@@ -154,7 +154,7 @@ nav {
  position: fixed;
  padding: 2.5vh 10vw 2.5vh 10vw;
  background: #1C1E26;
- z-index: 1;
+ z-index: 100;
  transition: background .25s;
  }
 
@@ -547,33 +547,24 @@ p strong {
 
 /* portfolio
 ========================================================== */
+
+/* Regular state */
 .grid {
- display: flex;
- flex-flow: row wrap;
+ display: grid;
+ margin: 0;
+ grid: repeat(3, 1fr) / repeat(3, 1fr);
+ height: 70vh;
+ max-height: 70vh;
  position: relative;
  }
 
 .grid-item {
  display: flex;
+ width: 100%;
+ height: 100%;
  align-items: center;
  justify-content: center;
- flex: 1 0 16vw;
- height: 23vh;
- overflow: hidden;
  transition: .5s ease;
- }
-
-.grid-item:hover {
- border: .5px dotted #FFF;
- }
-
-.grid-item:not(:nth-of-type(3n)) {
- color: white;
- margin-right: .4vw;
- }
-
-.grid-item:not(:nth-child(n+7)) {
- margin-bottom: .45vh;
  }
 
 .grid-item input {
@@ -581,67 +572,138 @@ p strong {
  }
 
 .grid-item label {
- display: flex;
- width: 100%;
  height: 100%;
- justify-content: center;
- align-items: center;
+ width: 100%;
  cursor: pointer;
  transition: .5s ease;
- overflow: hidden;
  }
 
+.grid-item-contents {
+ display: flex;
+ flex-flow: row wrap;
+ position: relative;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
+ height: 100%;
+ }
+
+.grid-item-contents > * {
+ z-index: 1;
+ }
+
+.grid-item-contents img {
+ width: 50%;
+ transition: .5s ease;
+ filter: grayscale(100%);
+ }
+
+.grid-item-contents p {
+ display: none;
+ }
+
+.grid-item-contents a {
+ display: none;
+ }
+
+/* Hover state */
+.grid-item:not(:empty):hover {
+ border: .5px dotted #FFF;
+ transition: .5s ease;
+ }
+
+.grid-item-contents:hover img {
+ filter: grayscale(0%);
+ }
+
+/* Opened (checked) state */
 .grid-item input:checked ~ label {
  display: flex;
  position: absolute;
- left: 7.5vw;
- top: 4vh;
- width: 45vw;
- height: 62vh;
+ left: 5vw;
+ top: 0vh;
+ width: 50vw;
+ height: 70vh;
  align-items: center;
  justify-content: center;
  border: .5px dotted #1ABC9C;
  background: #1C1E26;
  transition: ease .5s;
  z-index: 99;
+ cursor: initial;
  }
 
-.grid-item img {
- width: 11vw;
- transition: .5s ease;
- opacity: 1;
- backface-visibility: hidden;
- }
-
-.grid-item:hover img {
- opacity: .1;
- }
-
-.grid-item div {
- display: flex;
+.grid-item input:checked ~ label:after {
+ content: '\00D7';
  position: absolute;
- justify-content: center;
- align-items: flex-end;
- transition: .5s ease;
- opacity: 0;
+ right: 2.5vw;
+ top: 2.5vw;
+ cursor: pointer;
+ color: #F00A1E;
+ font-size: 3rem;
  }
 
-.grid-item:hover div {
- opacity: 1;
- }
-
-.grid-item h5 {
- display: flex;
- text-align: center;
- max-width: 16vw;
- margin: auto;
- }
-
-.grid-item div:hover h5 {
+.grid-item input:checked ~ label:after:hover {
  color: #0AA1F0;
  }
 
+.grid-item input:checked ~ label .grid-item-contents {
+ height: initial;
+ padding: 10vh;
+ overflow: hidden;
+ box-sizing: border-box;
+ }
 
+.grid-item input:checked ~ label .grid-item-contents img {
+ position: static;
+ height: 25%;
+ filter: none;
+ }
+
+.grid-item input:checked ~ label .grid-item-contents p {
+ display: flex;
+ position: static;
+ width: 100%;
+ max-width: 100%;
+ height: initial;
+ color: #A9A9A9;
+ margin: 0;
+ }
+
+.grid-item input:checked ~ label .grid-item-contents p:first-of-type {
+ font-weight: 500;
+ color: #FFF;
+ padding-bottom: 1rem;
+ }
+
+.grid-item input:checked ~ label .grid-item-contents p:last-of-type {
+ color: #A9A9A9;
+ padding-bottom: .5rem;
+ }
+
+.grid-item input:checked ~ label .grid-item-contents a {
+ display: initial;
+ position: relative;
+ width: 100%;
+ font-size: 1.2rem;
+ font-family: 'ff-tisa-sans-web-pro';
+ font-weight: 400;
+ color: #F00A1E;
+ line-height: 2.4rem;
+ text-transform: uppercase;
+ letter-spacing: .05rem;
+ text-align: left;
+ }
+
+.grid-item input:checked ~ label .grid-item-contents a:after {
+ content: '\00BB';
+ margin-left: .5rem;
+ font-size: 1.5rem;
+ }
+
+.grid-item:hover input:checked ~ label .grid-item-contents:after {
+ display: none;
+ }
 
 /* ANIMATIONS
 ========================================================== */
