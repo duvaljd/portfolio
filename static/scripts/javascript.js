@@ -2,7 +2,7 @@
 function updateNav() {
 
  var navigation = $('nav');
- var trigger = $('header h1');
+ var trigger = $('header h2');
 
  trigger.waypoint(function(direction) {
 
@@ -17,6 +17,17 @@ function updateNav() {
     context: '.page-content'
   });
 };
+
+//// MOBILE NAV TOGGLE
+function toggleNav() {
+  var x = document.getElementById("navigation");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
 
 //// HIGHLIGHT LINKS (waypoints.js)
 
